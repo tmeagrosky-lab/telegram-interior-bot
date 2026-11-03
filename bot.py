@@ -431,8 +431,14 @@ async def cmd_start(message: Message, state: FSMContext):
     "3. Получите визуализацию!\n\n"
     f"У вас сейчас: <b>{credits}</b> генераций.\n\n"
     "Начните с первой комнаты и найдите интерьер своей мечты ❤️",
-    parse_mode="HTML",
-)
+        "Команды:\n"
+        "/balance — баланс\n"
+        "/buy — купить генерации\n"
+        "/history — история генераций\n"
+        "/help — помощь",
+        parse_mode="HTML",
+    )
+  
 
 
 @dp.message(Command("help"))
