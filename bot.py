@@ -347,16 +347,15 @@ async def generation_worker():
                 new_balance = await get_or_create_user(user_id)
 
                 await bot.send_photo(
-                    chat_id=chat_id,
-                    photo=BufferedInputFile(result_bytes, filename="interior.jpg"),
-                    caption=(
-                        f"✅ Готово! Стиль: <b>{style['name']}</b>\n"
-                        f"Осталось генераций: <b>{new_balance}</b>\n\n"
-                        "Можешь выбрать другой стиль или прислать новое фото."
-                    ),
-                    parse_mode="HTML",
-                    reply_markup=get_styles_keyboard(),
-                )
+    chat_id=chat_id,
+    photo=BufferedInputFile(result_bytes, filename="interior.jpg"),
+    caption=(
+        f"✅ Готово! Стиль: <b>{style['name']}</b>\n"
+        f"Осталось генераций: <b>{new_balance}</b>\n\n"
+        "Пришли новое фото, чтобы сделать ещё одну генерацию."
+    ),
+    parse_mode="HTML",
+)
                 try:
                     await bot.delete_message(chat_id, message_id)
                 except Exception:
